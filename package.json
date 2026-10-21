@@ -1,0 +1,63 @@
+{
+  "name": "claude-agents-panel",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "version": "0.2.0",
+  "publisher": "blopa1",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/BLOPA1/vscode-claude-agents.git" },
+  "homepage": "https://github.com/BLOPA1/vscode-claude-agents#readme",
+  "bugs": { "url": "https://github.com/BLOPA1/vscode-claude-agents/issues" },
+  "icon": "media/icon.png",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other", "Visualization"],
+  "keywords": ["claude", "claude code", "agents", "subagents", "real time", "agentes", "subagentes", "tiempo real"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "extensionKind": ["workspace"],
+  "scripts": {
+    "demo": "node scripts/demo.js",
+    "package": "npx --yes @vscode/vsce package --skip-license"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [{ "id": "claudeAgents", "title": "%displayName%", "icon": "media/icon.svg" }]
+    },
+    "views": {
+      "claudeAgents": [{ "type": "webview", "id": "claudeAgents.view", "name": "%view.name%" }]
+    },
+    "commands": [
+      { "command": "claudeAgents.focus", "title": "%cmd.focus%", "category": "%displayName%" },
+      { "command": "claudeAgents.openInEditor", "title": "%cmd.openInEditor%", "category": "%displayName%", "icon": "$(link-external)" },
+      { "command": "claudeAgents.refresh", "title": "%cmd.refresh%", "category": "%displayName%", "icon": "$(refresh)" }
+    ],
+    "menus": {
+      "view/title": [
+        { "command": "claudeAgents.openInEditor", "when": "view == claudeAgents.view", "group": "navigation" },
+        { "command": "claudeAgents.refresh", "when": "view == claudeAgents.view", "group": "navigation" }
+      ]
+    },
+    "configuration": {
+      "title": "%displayName%",
+      "properties": {
+        "claudeAgents.language": {
+          "type": "string", "default": "auto", "enum": ["auto", "en", "es"],
+          "enumDescriptions": ["%cfg.language.auto%", "English", "Español"],
+          "description": "%cfg.language%"
+        },
+        "claudeAgents.claudeDir": {
+          "type": "string", "default": "",
+          "markdownDescription": "%cfg.claudeDir%"
+        },
+        "claudeAgents.pollSeconds": {
+          "type": "number", "default": 2, "minimum": 1,
+          "description": "%cfg.pollSeconds%"
+        },
+        "claudeAgents.statsSeconds": {
+          "type": "number", "default": 20, "minimum": 5,
+          "description": "%cfg.statsSeconds%"
+        }
+      }
+    }
+  }
+}

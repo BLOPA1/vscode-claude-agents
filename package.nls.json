@@ -1,0 +1,13 @@
+{
+  "displayName": "Claude Agents",
+  "description": "See your Claude Code chats in real time and what each agent and subagent is doing. Reads local files only.",
+  "view.name": "Panel",
+  "cmd.focus": "Open panel",
+  "cmd.openInEditor": "Open in an editor tab",
+  "cmd.refresh": "Refresh now",
+  "cfg.language": "Language of the panel.",
+  "cfg.language.auto": "Same as the editor (Spanish if VS Code is in Spanish, English otherwise)",
+  "cfg.claudeDir": "Claude Code configuration directory. Empty = `$CLAUDE_CONFIG_DIR` or `~/.claude`.",
+  "cfg.pollSeconds": "How often, in seconds, the transcripts are re-read (new bytes only).",
+  "cfg.statsSeconds": "How often, in seconds, today's totals are recalculated."
+}
